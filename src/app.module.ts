@@ -2,25 +2,16 @@ import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { Genre } from './modules/genre/entities/genre.entity';
+// import { Genre } from './modules/genre/entities/genre.entity';
 import { GenresModule } from './modules/genre/genres.module';
+import { SeriesModule } from './modules/series/series.module';
+import { connectionOptions } from './db/dataSourceLocal';
 
 @Module({
   imports: [
-    TypeOrmModule.forRoot({
-      type: 'postgres',
-      host: 'localhost',
-      port: 5432,
-      username: 'postgres',
-      password: 'choutzuyu',
-      database: 'db_epicstream',
-      entities: [Genre],
-      synchronize: true,
-      logging: true,
-      subscribers: [],
-      migrations: [],
-    }),
+    TypeOrmModule.forRoot(connectionOptions),
     GenresModule,
+    SeriesModule,
   ],
   controllers: [AppController],
   providers: [AppService],
