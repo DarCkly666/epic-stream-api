@@ -1,0 +1,29 @@
+### Series ##########################
+GET http://localhost:3000/series
+
+### Create Series
+POST http://localhost:3000/series
+Content-Type: application/json
+
+{
+    "title": "The amazing world of Gumball",
+    "description": "The Amazing World of Gumball is a British-American surreal comedy animated television series created by Ben Bocquelet for Cartoon Network.",
+    "releaseDate": "2011-05-03",
+    "coverUrl": "https://upload.wikimedia.org/wikipedia/en/2/2d/The_Amazing_World_of_Gumball_titlecard.png",
+    "genresId": [1, 2]
+}
+
+### Update Series
+PATCH http://localhost:3000/series/1
+Content-Type: application/json
+
+{
+    "title": "Breaking Bad",
+    "description": "Breaking Bad is an American neo-Western crime drama television series created and produced by Vince Gilligan.",
+    "releaseDate": "2008-01-20",
+    "genresId": [1]
+}
+
+### Delete Series
+DELETE http://localhost:3000/series/1
+

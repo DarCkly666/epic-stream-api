@@ -1,9 +1,11 @@
+import { EpisodeEntity } from 'src/modules/episodes/entities/episode.entity';
 import { SeriesEntity } from 'src/modules/series/entities/series.entity';
 import {
   Entity,
   PrimaryGeneratedColumn,
   Column,
   ManyToOne,
+  OneToMany,
   JoinColumn,
 } from 'typeorm';
 
@@ -21,4 +23,9 @@ export class SeassonEntity {
   @ManyToOne(() => SeriesEntity, (series) => series.seassons)
   @JoinColumn({ name: 'id_series' })
   series: SeriesEntity;
+
+  @OneToMany(() => EpisodeEntity, (episode) => episode.seasson, {
+    onDelete: 'CASCADE',
+  })
+  episodes: EpisodeEntity[];
 }

@@ -9,5 +9,6 @@ import { SeriesModule } from '../series/series.module';
   imports: [TypeOrmModule.forFeature([SeassonEntity]), SeriesModule],
   controllers: [SeassonController],
   providers: [SeassonService],
+  exports: [TypeOrmModule],
 })
 export class SeassonModule {}

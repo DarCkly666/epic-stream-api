@@ -1,0 +1,27 @@
+### Seassons ##########################
+### Get Seassons
+http://localhost:3000/seassons
+
+### Get Seassons by id
+http://localhost:3000/seassons/1
+
+### Create Seasson
+POST http://localhost:3000/seassons/4
+Content-Type: application/json
+
+{
+    "name": "Season 2",
+    "seassonNumber": 2,
+    "idSeries": 4
+}
+
+### Update Seasson
+PATCH http://localhost:3000/seassons/1
+Content-Type: application/json
+
+{
+    "seassonNumber": 1
+}
+
+### Delete Seasson
+DELETE http://localhost:3000/seassons/2

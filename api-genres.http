@@ -1,0 +1,21 @@
+### Genres ##########################
+http://localhost:3000/genres
+
+### Create Genre
+POST http://localhost:3000/genres
+Content-Type: application/json
+
+{
+    "name": "Drama"
+}
+
+### Update Genre
+PATCH http://localhost:3000/genres/1
+Content-Type: application/json
+
+{
+    "name": "Drama"
+}
+
+### Delete Genre
+DELETE http://localhost:3000/genres/1

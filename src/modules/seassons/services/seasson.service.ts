@@ -16,13 +16,15 @@ export class SeassonService {
   ) {}
 
   async findAll(): Promise<SeassonEntity[]> {
-    return await this.seassonService.find({ relations: ['series'] });
+    return await this.seassonService.find({
+      relations: ['series', 'episodes'],
+    });
   }
 
   async findOne(id: number): Promise<SeassonEntity> {
     const seasson = await this.seassonService.findOne({
       where: { idSeasson: id },
-      relations: ['series'],
+      relations: ['series', 'episodes'],
     });
     if (!seasson) {
       throw new NotFoundException('Seasson not found');

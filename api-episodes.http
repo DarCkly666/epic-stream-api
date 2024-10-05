@@ -1,0 +1,29 @@
+### Episode ##########################
+http://localhost:3000/episodes
+
+### Get Episodes by seasson
+http://localhost:3000/episodes?seasson=1
+
+### Create Episode
+POST http://localhost:3000/episodes
+Content-Type: application/json
+
+{
+    "title": "The DVD",
+    "duration": 20,
+    "episodeNumber": 1,
+    "streamUrl": "https://www.youtube.com/watch?v=3f3N1p3QAd4",
+    "seasson": 1
+}
+
+### Update Episode
+PATCH http://localhost:3000/episodes/1
+Content-Type: application/json
+
+{
+    "duration": 25
+}
+
+### Delete Episode
+DELETE http://localhost:3000/episodes/1
+
