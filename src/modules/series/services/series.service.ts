@@ -1,7 +1,7 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { In, Repository } from 'typeorm';
-import { SeriesEntity } from '../entities/series-entity';
+import { SeriesEntity } from '../entities/series.entity';
 import { CreateSeriesDto } from '../dtos/create-series.dto';
 import { UpdateSeriesDto } from '../dtos/update-series.dto';
 import { GenreEntity } from 'src/modules/genre/entities/genre.entity';
@@ -17,14 +17,14 @@ export class SeriesService {
 
   async findAll(): Promise<SeriesEntity[]> {
     return await this.seriesRepository.find({
-      relations: ['genres'],
+      relations: ['genres', 'seassons'],
     });
   }
 
   async findOne(id: number): Promise<SeriesEntity> {
     const series = await this.seriesRepository.findOne({
       where: { idSeries: id },
-      relations: ['genres'],
+      relations: ['genres', 'seassons'],
     });
     if (!series) {
       throw new NotFoundException(`Series with id ${id} not found.`);
@@ -33,19 +33,16 @@ export class SeriesService {
   }
 
   async create(series: CreateSeriesDto): Promise<SeriesEntity> {
-    try {
-      const genres = await this.genreRepository.findBy({
-        idGenre: In(series.genresId),
-      });
-      const newSeries = new SeriesEntity();
-      newSeries.title = series.title;
-      newSeries.description = series.description;
-      newSeries.releaseDate = series.releaseDate;
-      newSeries.genres = genres;
-      return await this.seriesRepository.save(newSeries);
-    } catch (error) {
-      throw new Error(error);
-    }
+    const genres = await this.genreRepository.findBy({
+      idGenre: In(series.genresId),
+    });
+    const newSeries = new SeriesEntity();
+    newSeries.title = series.title;
+    newSeries.description = series.description;
+    newSeries.releaseDate = series.releaseDate;
+    newSeries.coverUrl = series.coverUrl;
+    newSeries.genres = genres;
+    return await this.seriesRepository.save(newSeries);
   }
 
   async update(
@@ -69,6 +66,12 @@ export class SeriesService {
       }
       if (updateSeriesDto.releaseDate) {
         existingSeries.releaseDate = updateSeriesDto.releaseDate;
+      }
+      if (updateSeriesDto.coverUrl) {
+        existingSeries.coverUrl = updateSeriesDto.coverUrl;
+      }
+      if (updateSeriesDto.bannerUrl) {
+        existingSeries.bannerUrl = updateSeriesDto.bannerUrl;
       }
       if (updateSeriesDto.genresId) {
         const genres = await this.genreRepository.findBy({

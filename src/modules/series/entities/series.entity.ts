@@ -1,9 +1,11 @@
 import { GenreEntity } from 'src/modules/genre/entities/genre.entity';
+import { SeassonEntity } from 'src/modules/seassons/entities/seasson.entity';
 import {
   Entity,
   PrimaryGeneratedColumn,
   Column,
   ManyToMany,
+  OneToMany,
   JoinTable,
 } from 'typeorm';
 
@@ -21,6 +23,12 @@ export class SeriesEntity {
   @Column({ name: 'release_date' })
   releaseDate: Date;
 
+  @Column({ name: 'cover_url' })
+  coverUrl: string;
+
+  @Column({ name: 'banner_url', nullable: true })
+  bannerUrl: string;
+
   @ManyToMany(() => GenreEntity, (genre) => genre.series, {
     cascade: false,
     onDelete: 'CASCADE',
@@ -31,4 +39,9 @@ export class SeriesEntity {
     inverseJoinColumn: { name: 'id_genre', referencedColumnName: 'idGenre' },
   })
   genres: GenreEntity[];
+
+  @OneToMany(() => SeassonEntity, (seasson) => seasson.series, {
+    onDelete: 'CASCADE',
+  })
+  seassons: SeassonEntity[];
 }

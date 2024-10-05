@@ -1,4 +1,4 @@
-import { SeriesEntity } from 'src/modules/series/entities/series-entity';
+import { SeriesEntity } from 'src/modules/series/entities/series.entity';
 import { Entity, PrimaryGeneratedColumn, Column, ManyToMany } from 'typeorm';
 
 @Entity('genres')

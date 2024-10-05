@@ -6,12 +6,14 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { GenresModule } from './modules/genre/genres.module';
 import { SeriesModule } from './modules/series/series.module';
 import { connectionOptions } from './db/dataSourceLocal';
+import { SeassonModule } from './modules/seassons/seasson.module';
 
 @Module({
   imports: [
     TypeOrmModule.forRoot(connectionOptions),
     GenresModule,
     SeriesModule,
+    SeassonModule,
   ],
   controllers: [AppController],
   providers: [AppService],
