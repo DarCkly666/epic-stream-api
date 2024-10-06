@@ -1,0 +1,28 @@
+### Movies ##########################
+GET http://localhost:3000/movies
+
+### Create Movies
+POST http://localhost:3000/movies
+Content-Type: application/json
+
+{
+    "title": "Interstellar",
+    "description": "Interstellar is a 2014 epic science fiction film directed by Christopher Nolan.",
+    "image": "https://upload.wikimedia.org/wikipedia/en/b/bc/Interstellar_film_poster.jpg",
+    "duration": 169,
+    "releaseDate": "2014-11-07",
+    "streamUrl": "https://www.youtube.com/watch?v=zSWdZVtXT7E",
+    "genresId": [1]
+}
+
+### Update Movies
+PATCH http://localhost:3000/movies/1
+Content-Type: application/json
+
+{
+    "genresId": [1, 3]
+}
+
+### Delete Movies
+DELETE http://localhost:3000/movies/1
+

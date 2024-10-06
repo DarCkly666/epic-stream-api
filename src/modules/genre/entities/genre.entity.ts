@@ -1,3 +1,4 @@
+import { MovieEntity } from 'src/modules/movies/entities/movie.entity';
 import { SeriesEntity } from 'src/modules/series/entities/series.entity';
 import { Entity, PrimaryGeneratedColumn, Column, ManyToMany } from 'typeorm';
 
@@ -13,4 +14,9 @@ export class GenreEntity {
     onDelete: 'CASCADE',
   })
   series: SeriesEntity[];
+
+  @ManyToMany(() => MovieEntity, (movie) => movie.genres, {
+    onDelete: 'CASCADE',
+  })
+  movies: MovieEntity[];
 }

@@ -6,7 +6,7 @@ POST http://localhost:3000/genres
 Content-Type: application/json
 
 {
-    "name": "Drama"
+    "name": "Science"
 }
 
 ### Update Genre
