@@ -8,6 +8,7 @@ import { connectionOptions } from './db/dataSourceLocal';
 import { SeassonModule } from './modules/seassons/seasson.module';
 import { EpisodesModule } from './modules/episodes/episodes.module';
 import { MoviesModule } from './modules/movies/movies.module';
+import { UsersModule } from './modules/users/users.module';
 
 @Module({
   imports: [
@@ -17,6 +18,7 @@ import { MoviesModule } from './modules/movies/movies.module';
     SeassonModule,
     EpisodesModule,
     MoviesModule,
+    UsersModule,
   ],
   controllers: [AppController],
   providers: [AppService],

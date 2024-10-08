@@ -1,0 +1,26 @@
+### Users ##########################
+GET http://localhost:3000/users
+
+### Create Users
+POST http://localhost:3000/users
+Content-Type: application/json
+
+{
+    "username": "Admin",
+    "email": "admin@gmail.com",
+    "password": "admin",
+    "role": "admin"
+}
+
+### Update Users
+PATCH http://localhost:3000/users/1
+Content-Type: application/json
+
+{
+    "username": "Admin",
+    "password": "admin"
+}
+
+### Delete Users
+DELETE http://localhost:3000/users/1
+
