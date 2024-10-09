@@ -1,4 +1,12 @@
-import { Controller, Get, Post, Delete, Param, Body } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Post,
+  Delete,
+  Param,
+  Body,
+  Query,
+} from '@nestjs/common';
 import { CreateFavouriteMovieDto } from '../entities/dto/create-favourite-movie.dto';
 import { FavouriteMovieService } from '../services/favourite-movie.service';
 
@@ -7,7 +15,10 @@ export class FavouriteMovieController {
   constructor(private readonly favouriteMovieService: FavouriteMovieService) {}
 
   @Get()
-  async findAll() {
+  async findAll(@Query('user') user?: number) {
+    if (user) {
+      return this.favouriteMovieService.findFavouriteMoviesByUser(user);
+    }
     return this.favouriteMovieService.findAll();
   }
 

@@ -1,0 +1,18 @@
+### Favourite Movie ##########################
+GET http://localhost:3000/favourite-movies
+
+### Get Favourite Movie by User 
+GET http://localhost:3000/favourite-movies?user=1
+
+### Create Favourite Movie
+POST http://localhost:3000/favourite-movies
+Content-Type: application/json
+
+{
+    "idUser": 1,
+    "idMovie": 1
+}
+
+### Delete Favourite Movie
+DELETE http://localhost:3000/favourite-movies/2
+

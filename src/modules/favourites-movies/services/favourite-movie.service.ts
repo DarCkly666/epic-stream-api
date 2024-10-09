@@ -17,13 +17,24 @@ export class FavouriteMovieService {
   ) {}
 
   async findAll(): Promise<FavouriteMovieEntity[]> {
-    return this.favouriteMovieRepository.find();
+    return this.favouriteMovieRepository.find({ relations: ['movies'] });
   }
 
   async findOne(id: number): Promise<FavouriteMovieEntity> {
     return this.favouriteMovieRepository.findOne({
       where: { idFavorite: id },
+      relations: ['movies'],
     });
+  }
+
+  async findFavouriteMoviesByUser(
+    idUser: number,
+  ): Promise<FavouriteMovieEntity[]> {
+    const favs = await this.favouriteMovieRepository.find({
+      where: { user: { idUser: idUser } },
+      relations: ['movies'],
+    });
+    return favs;
   }
 
   async create(

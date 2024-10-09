@@ -1,4 +1,12 @@
-import { Controller, Get, Post, Delete, Param, Body } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Post,
+  Delete,
+  Param,
+  Body,
+  Query,
+} from '@nestjs/common';
 import { FavouriteSeriesService } from '../services/favourite-series.service';
 import { CreateFavouriteSeriesDto } from '../entities/dto/create-favourite-series.dto';
 
@@ -9,7 +17,10 @@ export class FavouriteSeriesController {
   ) {}
 
   @Get()
-  async findAll() {
+  async findAll(@Query('user') user?: number) {
+    if (user) {
+      return this.favouriteSeriesService.findFavouriteSeriesByUser(user);
+    }
     return this.favouriteSeriesService.findAll();
   }
 

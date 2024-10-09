@@ -17,13 +17,23 @@ export class FavouriteSeriesService {
   ) {}
 
   async findAll(): Promise<FavouriteSeriesEntity[]> {
-    return this.favouriteSeriesRepository.find();
+    return this.favouriteSeriesRepository.find({ relations: ['series'] });
   }
 
   async findOne(id: number): Promise<FavouriteSeriesEntity> {
     return this.favouriteSeriesRepository.findOne({
       where: { idFavorite: id },
     });
+  }
+
+  async findFavouriteSeriesByUser(
+    idUser: number,
+  ): Promise<FavouriteSeriesEntity[]> {
+    const favs = await this.favouriteSeriesRepository.find({
+      where: { user: { idUser: idUser } },
+      relations: ['series'],
+    });
+    return favs;
   }
 
   async create(

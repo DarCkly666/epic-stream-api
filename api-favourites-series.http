@@ -1,6 +1,9 @@
 ### Favourite Series ##########################
 GET http://localhost:3000/favourite-series
 
+### Get Favourite Series by User
+GET http://localhost:3000/favourite-series?user=1
+
 ### Create Favourite Series
 POST http://localhost:3000/favourite-series
 Content-Type: application/json
