@@ -10,7 +10,7 @@ Content-Type: application/json
     "description": "The Amazing World of Gumball is a British-American surreal comedy animated television series created by Ben Bocquelet for Cartoon Network.",
     "releaseDate": "2011-05-03",
     "coverUrl": "https://upload.wikimedia.org/wikipedia/en/2/2d/The_Amazing_World_of_Gumball_titlecard.png",
-    "genresId": [1, 2]
+    "genresId": [1]
 }
 
 ### Update Series

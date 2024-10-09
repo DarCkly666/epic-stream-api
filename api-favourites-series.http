@@ -1,0 +1,15 @@
+### Favourite Series ##########################
+GET http://localhost:3000/favourite-series
+
+### Create Favourite Series
+POST http://localhost:3000/favourite-series
+Content-Type: application/json
+
+{
+    "idUser": 1,
+    "idSeries": 1
+}
+
+### Delete Favourite Series
+DELETE http://localhost:3000/favourite-series/2
+

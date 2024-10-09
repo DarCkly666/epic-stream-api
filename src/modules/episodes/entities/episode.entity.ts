@@ -5,6 +5,8 @@ import {
   Column,
   JoinColumn,
   ManyToOne,
+  CreateDateColumn,
+  UpdateDateColumn,
 } from 'typeorm';
 
 @Entity('episodes')
@@ -23,6 +25,19 @@ export class EpisodeEntity {
 
   @Column({ name: 'stream_url' })
   streamUrl: string;
+
+  @CreateDateColumn({
+    name: 'created_at',
+    default: () => 'CURRENT_TIMESTAMP(6)',
+  })
+  createdAt: Date;
+
+  @UpdateDateColumn({
+    name: 'updated_at',
+    default: () => 'CURRENT_TIMESTAMP(6)',
+    onUpdate: 'CURRENT_TIMESTAMP(6)',
+  })
+  updatedAt: Date;
 
   @ManyToOne(() => SeassonEntity, (seasson) => seasson.episodes)
   @JoinColumn({ name: 'id_seasson' })

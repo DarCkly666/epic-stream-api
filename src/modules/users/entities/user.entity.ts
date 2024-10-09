@@ -4,8 +4,11 @@ import {
   CreateDateColumn,
   UpdateDateColumn,
   Entity,
+  OneToMany,
 } from 'typeorm';
 import { Role } from './role.enum';
+import { FavouriteSeriesEntity } from 'src/modules/favourites-series/entities/favourite-series.entity';
+import { FavouriteMovieEntity } from 'src/modules/favourites-movies/entities/favourite-movie.entity';
 
 @Entity({ name: 'users' })
 export class UserEntity {
@@ -39,4 +42,16 @@ export class UserEntity {
     onUpdate: 'CURRENT_TIMESTAMP(6)',
   })
   updatedAt: Date;
+
+  @OneToMany(() => FavouriteSeriesEntity, (favourite) => favourite.user, {
+    cascade: true,
+    onDelete: 'CASCADE',
+  })
+  favouritesSeries: FavouriteSeriesEntity[];
+
+  @OneToMany(() => FavouriteMovieEntity, (favourite) => favourite.user, {
+    cascade: true,
+    onDelete: 'CASCADE',
+  })
+  favouritesMovies: FavouriteMovieEntity[];
 }

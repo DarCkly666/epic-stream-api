@@ -1,4 +1,4 @@
-import { IsNotEmpty, IsNumber, IsString } from 'class-validator';
+import { IsDateString, IsNotEmpty, IsNumber, IsString } from 'class-validator';
 
 export class CreateSeassonDto {
   @IsString()
@@ -8,6 +8,10 @@ export class CreateSeassonDto {
   @IsNumber()
   @IsNotEmpty()
   seassonNumber: number;
+
+  @IsDateString()
+  @IsNotEmpty()
+  releaseDate: Date;
 
   @IsNumber()
   @IsNotEmpty()

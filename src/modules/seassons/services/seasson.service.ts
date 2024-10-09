@@ -46,6 +46,7 @@ export class SeassonService {
       const newSeasson = new SeassonEntity();
       newSeasson.name = createSeasson.name;
       newSeasson.seassonNumber = createSeasson.seassonNumber;
+      newSeasson.releaseDate = createSeasson.releaseDate;
       newSeasson.series = series;
       return await this.seassonService.save(newSeasson);
     } catch (error) {
@@ -67,6 +68,9 @@ export class SeassonService {
     }
     if (seasson.seassonNumber) {
       seassonExist.seassonNumber = seasson.seassonNumber;
+    }
+    if (seasson.releaseDate) {
+      seassonExist.releaseDate = seasson.releaseDate;
     }
     if (seasson.idSeries) {
       const series = await this.seriesService.findOne({

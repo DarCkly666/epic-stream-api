@@ -9,6 +9,8 @@ import { SeassonModule } from './modules/seassons/seasson.module';
 import { EpisodesModule } from './modules/episodes/episodes.module';
 import { MoviesModule } from './modules/movies/movies.module';
 import { UsersModule } from './modules/users/users.module';
+import { FavouritesSeriesModule } from './modules/favourites-series/favourites-series.module';
+import { FavouritesMoviesModule } from './modules/favourites-movies/favourites-movies.module';
 
 @Module({
   imports: [
@@ -19,6 +21,8 @@ import { UsersModule } from './modules/users/users.module';
     EpisodesModule,
     MoviesModule,
     UsersModule,
+    FavouritesSeriesModule,
+    FavouritesMoviesModule,
   ],
   controllers: [AppController],
   providers: [AppService],

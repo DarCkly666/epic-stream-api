@@ -9,6 +9,6 @@ import { GenresModule } from '../genre/genres.module';
   imports: [TypeOrmModule.forFeature([SeriesEntity]), GenresModule],
   controllers: [SeriesController],
   providers: [SeriesService],
-  exports: [TypeOrmModule],
+  exports: [TypeOrmModule, SeriesService],
 })
 export class SeriesModule {}

@@ -1,3 +1,4 @@
+import { FavouriteMovieEntity } from 'src/modules/favourites-movies/entities/favourite-movie.entity';
 import { GenreEntity } from 'src/modules/genre/entities/genre.entity';
 import {
   Entity,
@@ -7,6 +8,7 @@ import {
   ManyToMany,
   JoinTable,
   PrimaryGeneratedColumn,
+  OneToMany,
 } from 'typeorm';
 
 @Entity('movies')
@@ -47,6 +49,12 @@ export class MovieEntity {
     onUpdate: 'CURRENT_TIMESTAMP(6)',
   })
   updatedAt: Date;
+
+  @OneToMany(() => FavouriteMovieEntity, (favourite) => favourite.movies, {
+    cascade: true,
+    onDelete: 'CASCADE',
+  })
+  favourites: FavouriteMovieEntity[];
 
   @ManyToMany(() => GenreEntity, (genre) => genre.movies)
   @JoinTable({

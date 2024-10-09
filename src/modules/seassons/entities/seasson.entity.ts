@@ -4,6 +4,8 @@ import {
   Entity,
   PrimaryGeneratedColumn,
   Column,
+  CreateDateColumn,
+  UpdateDateColumn,
   ManyToOne,
   OneToMany,
   JoinColumn,
@@ -19,6 +21,22 @@ export class SeassonEntity {
 
   @Column({ name: 'seasson_number', type: 'int' })
   seassonNumber: number;
+
+  @Column({ name: 'release_date' })
+  releaseDate: Date;
+
+  @CreateDateColumn({
+    name: 'created_at',
+    default: () => 'CURRENT_TIMESTAMP(6)',
+  })
+  createdAt: Date;
+
+  @UpdateDateColumn({
+    name: 'updated_at',
+    default: () => 'CURRENT_TIMESTAMP(6)',
+    onUpdate: 'CURRENT_TIMESTAMP(6)',
+  })
+  updatedAt: Date;
 
   @ManyToOne(() => SeriesEntity, (series) => series.seassons)
   @JoinColumn({ name: 'id_series' })

@@ -1,3 +1,4 @@
+import { FavouriteSeriesEntity } from 'src/modules/favourites-series/entities/favourite-series.entity';
 import { GenreEntity } from 'src/modules/genre/entities/genre.entity';
 import { SeassonEntity } from 'src/modules/seassons/entities/seasson.entity';
 import {
@@ -7,6 +8,8 @@ import {
   ManyToMany,
   OneToMany,
   JoinTable,
+  CreateDateColumn,
+  UpdateDateColumn,
 } from 'typeorm';
 
 @Entity('series')
@@ -28,6 +31,25 @@ export class SeriesEntity {
 
   @Column({ name: 'banner_url', nullable: true })
   bannerUrl: string;
+
+  @CreateDateColumn({
+    name: 'created_at',
+    default: () => 'CURRENT_TIMESTAMP(6)',
+  })
+  createdAt: Date;
+
+  @UpdateDateColumn({
+    name: 'updated_at',
+    default: () => 'CURRENT_TIMESTAMP(6)',
+    onUpdate: 'CURRENT_TIMESTAMP(6)',
+  })
+  updatedAt: Date;
+
+  @OneToMany(() => FavouriteSeriesEntity, (favourite) => favourite.series, {
+    cascade: true,
+    onDelete: 'CASCADE',
+  })
+  favourites: FavouriteSeriesEntity[];
 
   @ManyToMany(() => GenreEntity, (genre) => genre.series, {
     cascade: false,
