@@ -70,4 +70,12 @@ export class UserService {
     }
     await this.userRepository.remove(user);
   }
+
+  async getUserByUsername(username: string): Promise<UserEntity> {
+    const user = await this.userRepository.findOne({ where: { username } });
+    if (!user) {
+      throw new NotFoundException('User not found');
+    }
+    return user;
+  }
 }

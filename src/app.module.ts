@@ -11,6 +11,7 @@ import { MoviesModule } from './modules/movies/movies.module';
 import { UsersModule } from './modules/users/users.module';
 import { FavouritesSeriesModule } from './modules/favourites-series/favourites-series.module';
 import { FavouritesMoviesModule } from './modules/favourites-movies/favourites-movies.module';
+import { AuthModule } from './modules/auth/auth.module';
 
 @Module({
   imports: [
@@ -23,6 +24,7 @@ import { FavouritesMoviesModule } from './modules/favourites-movies/favourites-m
     UsersModule,
     FavouritesSeriesModule,
     FavouritesMoviesModule,
+    AuthModule,
   ],
   controllers: [AppController],
   providers: [AppService],
