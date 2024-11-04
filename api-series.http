@@ -29,4 +29,8 @@ DELETE http://localhost:3000/series/1
 
 ### Get series with authorization
 GET http://localhost:3000/series
+<<<<<<< HEAD
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsInVzZXJuYW1lIjoiQWRtaW4iLCJpYXQiOjE3Mjk0NTY2MjUsImV4cCI6MTcyOTQ1NjY4NX0.SCTo8fHdRXISJfPa2X7ueSKVYoxb3brQSd0ZlV7rbXA
+=======
+Authorization: Bearer eyJhbGciOiJIxxx
+>>>>>>> 5ca6c4e (Removed old files)

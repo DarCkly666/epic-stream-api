@@ -9,7 +9,7 @@ Content-Type: application/json
 
 ### Profile protected test
 GET http://localhost:3000/auth/profile
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsInVzZXJuYW1lIjoiQWRtaW4iLCJpYXQiOjE3Mjk0NTU2NTAsImV4cCI6MTcyOTQ1NTcxMH0.5Ca8rWgvXyCz_rRwb4s8x4CHESOsClOUf1TI_DmQ6pw
+Authorization: Bearer eyJhbGciOiJIUzxxx
 
 ### Profile protected test no token
 GET http://localhost:3000/auth/profile
